@@ -6,11 +6,12 @@ function computerPlay() {
 }
 function userPlay() {
   let userChoice = prompt("Input your choice: ");
-  userChoice = userChoice.toLowerCase();
-  while (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors") {
+  let lowerChoice = userChoice.toLowerCase();
+  while (lowerChoice !== "rock" && lowerChoice !== "paper" && lowerChoice !== "scissors") {
     userChoice = prompt("Input a correct choice: ");
+    lowerChoice = userChoice.toLowerCase();
   }
-  return userChoice;
+  return lowerChoice;
 }
 function playRound(computerChoice, userChoice) {
   let winnerRound = "";
@@ -29,5 +30,32 @@ function playRound(computerChoice, userChoice) {
   return winnerRound;
 }
 function game() {
-  
+  let counterComputer = 0,
+      counterUser = 0;
+  for(let i = 0; i < 5 ; i++) {
+    let compSel = computerPlay();
+    let userSel = userPlay();
+    let roundResult = playRound(compSel, userSel);
+    let condWinnig = roundResult.charAt(0);
+    if (condWinnig === "C") {
+      counterComputer++;
+    }
+    if (condWinnig === "Y") {
+      counterUser++;
+    }
+    console.log(roundResult);
+  }
+  let gameResult = "";
+  if (counterComputer === counterUser) {
+    gameResult = `The game it's a tie computer: ${counterComputer}, 
+                    You: ${counterUser}`;
+  } else if (counterComputer > counterUser) {
+    gameResult = `Computer wins the game computer: ${counterComputer}
+                  You: ${counterUser}`;
+  } else {
+    gameResult = `You win the game, congrats computer: ${counterComputer}
+    You: ${counterUser}`;
+  }
+  console.log(gameResult);
 }
+game();
