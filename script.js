@@ -4,6 +4,7 @@ function computerPlay() {
   let computerChoice = computerOptions[randIndex];
   return computerChoice;
 }
+/*
 function userPlay() {
   let userChoice = prompt("Input your choice: ");
   let lowerChoice = userChoice.toLowerCase();
@@ -12,7 +13,7 @@ function userPlay() {
     lowerChoice = userChoice.toLowerCase();
   }
   return lowerChoice;
-}
+}*/
 function playRound(computerChoice, userChoice) {
   let winnerRound = "";
   let compWinning = computerChoice === "rock" && userChoice === "scissors" || computerChoice === "scissors" && userChoice === "paper" || computerChoice === "paper" && userChoice === "rock";
@@ -29,12 +30,12 @@ function playRound(computerChoice, userChoice) {
   }
   return winnerRound;
 }
-function game() {
+/*
+function game(computer, human) {
   let counterComputer = 0,
-      counterUser = 0;
-  for(let i = 0; i < 5 ; i++) {
-    let compSel = computerPlay();
-    let userSel = userPlay();
+    counterUser = 0;
+    let compSel = computer;
+    let userSel = human;
     let roundResult = playRound(compSel, userSel);
     let condWinnig = roundResult.charAt(0);
     if (condWinnig === "C") {
@@ -44,19 +45,55 @@ function game() {
       counterUser++;
     }
     console.log(roundResult);
-  }
-  let gameResult = "";
-  if (counterComputer === counterUser) {
-    gameResult = `The game it's a tie computer: ${counterComputer}, 
-                    You: ${counterUser}`;
-  } else if (counterComputer > counterUser) {
-    gameResult = `Computer wins the game computer: ${counterComputer}
-                  You: ${counterUser}`;
-  } else {
-    gameResult = `You win the game, congrats computer: ${counterComputer}
-    You: ${counterUser}`;
-  }
-  console.log(gameResult);
+    if (counterComputer >= 5) {
+      console.log('computer won');
+    }
+    if (counterUser >= 5) {
+      console.log('user won');
+    }
 }
-game();
-//checking out branch
+
+*/
+/*
+let rock = document.getElementById('rock');
+let paper = document.getElementById('paper');
+let scissors = document.getElementById('scissors');
+
+rock.addEventListener('click', function() {
+  let userChoice = 'rock';
+  let round = playRound(computerPlay(), userChoice);
+  console.log(round);
+});
+paper.addEventListener('click', function() {
+  let userChoice = 'paper';
+  let round = playRound(computerPlay(), userChoice);
+  console.log(round);
+});
+scissors.addEventListener('click', function() {
+  let userChoice = 'scissors';
+  let round = playRound(computerPlay(), userChoice);
+  console.log(round);
+});
+*/
+const choices = document.querySelectorAll('.choice');
+let contUser = 0;
+let contComp = 0;
+choices.forEach(choice => {
+  choice.addEventListener('click', function() {
+    let userChoice = choice.id;
+    let round = playRound(computerPlay(), userChoice);
+    if (round.charAt(0) === "C") {
+      contComp++;
+    }
+    if (round.charAt(0) === "Y") {
+      contUser++;
+    }
+    console.log(round);
+    console.log(`user: ${contUser}, comp: ${contComp}`);
+    if (contUser >= 5) {
+      console.log(`User won`);
+    } else if(contComp >= 5) {
+      console.log(`Computer won`);
+    }
+});
+});
