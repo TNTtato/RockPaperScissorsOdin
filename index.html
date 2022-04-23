@@ -13,6 +13,7 @@
     Rock, Paper, Scissors
   </header>
   <div id="container" class="container">
+    <h2>Pick a choice</h2>
     <div id="choices" class="choices">
       <div id="rock" class="choice">
         <img src="./img/rock3.png" alt="rock">
@@ -27,7 +28,15 @@
     <div id="result-game" class="result-game"></div>
   </div>
 </body>
-<!--
-<script src="./script.js" defer></script>
+<script src="./script.js"></script>
+<!-- 
+<script>
+  rock = document.querySelector('#rock');
+  let userChoice = '';
+  rock.addEventListener('click', function() {
+    userChoice = 'rock';
+    console.log(userChoice);
+  });
+</script>
 -->
 </html>
