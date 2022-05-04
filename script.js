@@ -26,22 +26,14 @@ const choices = document.querySelectorAll('.choice');
 let contUser = 0;
 let contComp = 0;
 
-function stopGame() {
-  return;
-}
-
 function getMovesIcons(compC, usC) {
-  //get the icon of the chosen option
-  //by the computer
   const moveComp = document.getElementById(compC).cloneNode(true);
   moveComp.setAttribute('id', 'compMove');
   moveComp.setAttribute('class', 'chosen');
-  //by the user
   const moveUser = document.getElementById(usC).cloneNode(true);
   moveUser.setAttribute('id', 'usC');
   moveUser.setAttribute('class', 'chosen');
 
-  //container of icons
   const showIconChoices = document.createElement('div');
   const pExpl = document.createElement('p');
   const pExplText = document.createTextNode(`computer's vs user's`);
@@ -61,7 +53,7 @@ function showWinnerRound(textRound, count, compC, usC) {
   const titleR = document.createTextNode('Round Result');
   const resultGame = document.getElementById('result-game');
 
-const showIconChoices = getMovesIcons(compC, usC);
+  const showIconChoices = getMovesIcons(compC, usC);
 
   resultGame.innerHTML = '';
   pWin.setAttribute('class', 'p-win');
@@ -85,9 +77,7 @@ function createNewBody(winner, count, compC, usC){
   const retry = document.createElement('div');
 
   retry.innerHTML = '<span class=reload>&#x21bb;</span>';
-  retry.addEventListener('click', function() {
-    location.reload();
-  });
+  retry.addEventListener('click', () => location.reload());
 
   const showIconChoices = getMovesIcons(compC, usC);
 
